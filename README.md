@@ -176,7 +176,7 @@ The next figure shows that anomalies in total price are strongly related to high
 
 ![logo](images/8_anomalyscore.png)
 
-The next figure shows the descriptive statistics of churn and non-churn events, and anomaly and normal events in order to get a better overall understanding of the Isolation Forest modeling.
+The next figure shows the descriptive statistics of churn and non-churn events, as well as anomaly and normal events in order to get a better overall understanding of the Isolation Forest modeling.
 
 ![logo](images/9_statistics_anomaly.png)
 
