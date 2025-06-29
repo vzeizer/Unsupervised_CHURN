@@ -93,13 +93,17 @@ Understand purchase diversity: Group customers by the variety of items, groups, 
 - **Understand purchase diversity**: Group customers by the variety of items, groups, or segments they purchase. Some segments might be loyal to specific product categories, while others explore a wider range.
 - **Quantity-based segmentation**: Identify customers who tend to buy in bulk versus those who purchase single items. This could inform inventory management and targeted offers.
 
+The image below shows the *elbow method* from K-Means applied to obtain insights into the suitable number of clusters for unsupervised learning. We'll use simply 3 clusters.
+
+
 ![image](/images/1_kmeans_elbow.png)
 
+The figure below shows the the number of orders by total amount spent for each cluster, from which one can notice that cluster 0 tends to have a higher average value of number of orders and total amount spent, followed by clusters 1 and 2, respectively.
 
 
 ![logo](/images/2_totalspent_clusters.png)
 
-
+Now, the figure below shows the average churn value for each cluster, showing that cluster 0 and 1 are related to non-churn events, while cluster 2 is related to churn-events of customers.
 
 ![logo](/images/3_averagechurn_averageordervalue.png)
 
@@ -114,10 +118,16 @@ Understand purchase diversity: Group customers by the variety of items, groups, 
 - Channel-Specific Customer Profiles: Understand if customers acquired through different sales_channel exhibit distinct purchasing behaviors in terms of price, quantity, or item preferences. This can inform channel-specific marketing strategies.
 
 
+The figure below shows the elbow method applied to get insights into the best number of clusters for unsupervised learning for segmentation based on Registration and Channel. We'll use 4 clusters so on.
+
 ![logo](images/4_elbow_dayssinceregistration.png)
+
+The next figure shows the days since registration for each cluster in terms of churn and non-churn events, from which one can notice that cluster 0 is related to churning events possessing clients with a higher median of days since registration, while cluster 3 is related to non-churning events possessing clients with a higher median of days since registration.
 
 
 ![logo](images/5_clusters_dayssinceregistration.png)
+
+Now, the next figure shows the results of clusterization for each cluster segmented by sales channel. 
 
 
 ![logo](images/5b_clusters_saleschannel.png)
@@ -151,16 +161,22 @@ Understand purchase diversity: Group customers by the variety of items, groups, 
 
 - **Isolation Forest: Works by isolating instances that are "rare" and thus easier to separate from the rest of the data.** It's effective for detecting global outliers.
 
+The next figure shows that anomalies in total price are strongly related to churning events.
 
 ![logo](images/6_anomaly_totalprice.png)
 
 
+The next figure shows that anomalies in item total price are strongly related to churning events.
+
+
 ![logo](images/7_anomaly_itemtotalprice.png)
+
+The next figure shows that anomalies in total price are strongly related to higher anomaly scores obtained from Isolation Forest technique.
 
 
 ![logo](images/8_anomalyscore.png)
 
-
+The next figure shows the descriptive statistics of churn and non-churn events, and anomaly and normal events in order to get a better overall understanding of the Isolation Forest modeling.
 
 ![logo](images/9_statistics_anomaly.png)
 
@@ -182,18 +198,28 @@ Understand purchase diversity: Group customers by the variety of items, groups, 
 - **Understand cluster relationships**: The dendrogram shows which clusters are more similar to each other, providing a richer understanding of the customer segments and their relationships.
 - **Identify potential churn-prone segments**: **After forming clusters, you can analyze the churn rate within each cluster** (by merging the cluster labels with "is_churn" column). This can reveal if certain segments, defined by their transaction history or registration details, have a higher propensity to churn.
 
+The next figure shows a dendogram in this data, from which 6 clusters have been selected.
 
 
 ![logo](images/10_hierarchical_dendogram.png)
 
 
+The figure below shows a scatter plot number of orders by total amount spent for each of the six clusters.
+
 ![logo](images/11_hierarchicalcluster_orders.png)
+
+The next figure shows a boxplot of the total amount spent by cluster, from which one can notice that clusters 1 and 2 are more related to higher values of total amount spent, while clusters 0 and 5 are more related to a lesser total amount spent.
 
 
 ![logo](images/12_hierarchicalcluster_totalamountspent.png)
 
+The figure below shows a box plot of Average Order Value by average churn, from which one can notice that clusters 3 and 5 are related to churning events, with cluster 3 having a much higher value of average order value than cluster 5.
+
 
 ![logo](images/13_hierarchical_averageordervalue_averagechurn.png)
+
+
+The next three figure shows the mean, median, and standard deviation for the main features of this dataset.
 
 
 ![logo](images/14_hierarchicalstatistics_median.png)
@@ -240,13 +266,16 @@ Examine the dendrogram to understand the relationships between customers and dec
 - **Visualization**: You can visualize the customers in the space of the first few principal components (e.g., a scatter plot of PC1 vs. PC2), which might reveal natural groupings or segments of customers based on these underlying dimensions.
 - **Input for Other Models**: The principal components can be used as input features for supervised churn prediction models. They might capture complex relationships in the data more effectively than the original features alone.
 
+The figure below shows the *cumulative explained variance* in PCA for the five components, from which one can notice that the three first components contain more than 90% of the explained variance.
 
 ![logo](images/17_pca_cumulativeexplainedvariance.png)
 
+The figure below shows a box plot of Total Spent by principal component for all the six components, from which one can notice that principal_component_1 contains the largest values of total spent for churn and non-churn events, respectively. 
 
 
 ![logo](images/18_pca_churn_totalspent.png)
 
+The figure below shows a box plot of Total Spent by principal component max (maximum principal component for each customer) for all the six components, from which one can notice that principal_component_max_1 contains the largest values of total spent for churn and non-churn events, respectively. 
 
 
 ![logo](images/19_pcamax_churn_totalspent.png)
@@ -262,11 +291,37 @@ Examine the dendrogram to understand the relationships between customers and dec
 - **Number of Factors**: Determining the appropriate number of factors to extract can be subjective and often involves examining eigenvalues, scree plots (similar to PCA), and interpretability.
 - **Rotation**: Factor rotation techniques (like 'varimax') are often used to make the factors more interpretable by simplifying the loadings.
 
+The figure below shows a boxplot of Total Spent for each of the factor analysis components for churn and non-churn events. For instance, one can notice that component 3 tends to have very small range values for total spent in non-churn events, while for this component in churn-events this range of values is much broader.
+
+
 
 ![logo](images/20_fca_churn_totalspent.png)
+
+The figure below shows a box plot of Total Spent by factor analysis component max (maximum factor analysis component for each customer) for all the six components, from which one can notice that factor_analysis_max_5 contains much larger median values for Total spents for churn-events than non-churn events. 
 
 
 ![logo](images/21_fcamax_churn_totalspent.png)
 
+----------------------------------
+MIT License
+----------------------------------
 
+Copyright (c) [2025] [Dr. Vagner Zeizer Carvalho paes]
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
