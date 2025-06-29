@@ -96,16 +96,16 @@ Understand purchase diversity: Group customers by the variety of items, groups, 
 The image below shows the *elbow method* from K-Means applied to obtain insights into the suitable number of clusters for unsupervised learning. We'll use simply 3 clusters.
 
 
-![image](/images/1_kmeans_elbow.png)
+![image](./images/1_kmeans_elbow.png)
 
 The figure below shows the the number of orders by total amount spent for each cluster, from which one can notice that cluster 0 tends to have a higher average value of number of orders and total amount spent, followed by clusters 1 and 2, respectively.
 
 
-![logo](/images/2_totalspent_clusters.png)
+![logo](./images/2_totalspent_clusters.png)
 
 Now, the figure below shows the average churn value for each cluster, showing that cluster 0 and 1 are related to non-churn events, while cluster 2 is related to churn-events of customers.
 
-![logo](/images/3_averagechurn_averageordervalue.png)
+![logo](./images/3_averagechurn_averageordervalue.png)
 
 
 ## **Approach 2: Segmentation Based on Registration and Channel**
@@ -120,17 +120,17 @@ Now, the figure below shows the average churn value for each cluster, showing th
 
 The figure below shows the elbow method applied to get insights into the best number of clusters for unsupervised learning for segmentation based on Registration and Channel. We'll use 4 clusters so on.
 
-![logo](images/4_elbow_dayssinceregistration.png)
+![logo](./images/4_elbow_dayssinceregistration.png)
 
 The next figure shows the days since registration for each cluster in terms of churn and non-churn events, from which one can notice that cluster 0 is related to churning events possessing clients with a higher median of days since registration, while cluster 3 is related to non-churning events possessing clients with a higher median of days since registration.
 
 
-![logo](images/5_clusters_dayssinceregistration.png)
+![logo](./images/5_clusters_dayssinceregistration.png)
 
 Now, the next figure shows the results of clusterization for each cluster segmented by sales channel. 
 
 
-![logo](images/5b_clusters_saleschannel.png)
+![logo](./images/5b_clusters_saleschannel.png)
 
 
 
